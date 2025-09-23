@@ -8,40 +8,20 @@ import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import SlideNavigation from "@/components/SlideNavigation";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
-        <section id="hero">
-          <Hero />
-        </section>
-        <section id="clients">
-          <ClientLogos />
-        </section>
-        <section id="features">
-          <Features />
-        </section>
-        <section id="services">
-          <Services />
-        </section>
-        <section id="it-services">
-          <ITServices />
-        </section>
-        <section id="cta">
-          <CallToAction />
-        </section>
-        <section id="testimonials">
-          <Testimonials />
-        </section>
-        <section id="contact">
-          <ContactForm />
-        </section>
-      </main>
+      <Hero />
+      <ClientLogos />
+      <Features />
+      <Services />
+      <ITServices />
+      <CallToAction />
+      <Testimonials />
+      <ContactForm />
       <Footer />
-      <SlideNavigation />
     </div>
   );
 };

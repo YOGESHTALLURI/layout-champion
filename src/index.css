@@ -182,27 +182,4 @@ All colors MUST be HSL.
   .btn-primary {
     @apply transition-all duration-200 hover:scale-105 active:scale-95;
   }
-
-  /* Smooth Scroll */
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-  }
-
-  /* Full Page Slide Effect */
-  section {
-    @apply h-screen flex flex-col justify-center;
-    scroll-snap-align: start;
-  }
-  
-  /* Account for fixed header */
-  main {
-    @apply pt-20;
-    scroll-snap-type: y mandatory;
-  }
-  
-  main section {
-    @apply h-[calc(100vh-5rem)];
-    scroll-snap-align: start;
-  }
 }

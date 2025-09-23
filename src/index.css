@@ -182,4 +182,18 @@ All colors MUST be HSL.
   .btn-primary {
     @apply transition-all duration-200 hover:scale-105 active:scale-95;
   }
+
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Section Spacing for Slide Effect */
+  section {
+    @apply min-h-screen flex flex-col justify-center;
+  }
+  
+  section:first-child {
+    @apply min-h-0;
+  }
 }

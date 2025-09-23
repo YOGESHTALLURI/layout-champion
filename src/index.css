@@ -188,12 +188,17 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
-  /* Section Spacing for Slide Effect */
+  /* Full Page Slide Effect */
   section {
-    @apply min-h-screen flex flex-col justify-center;
+    @apply h-screen flex flex-col justify-center;
   }
   
-  section:first-child {
-    @apply min-h-0;
+  /* Account for fixed header */
+  main {
+    @apply pt-20;
+  }
+  
+  main section {
+    @apply h-[calc(100vh-5rem)];
   }
 }

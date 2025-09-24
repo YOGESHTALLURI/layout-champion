@@ -35,8 +35,8 @@ const heroSlides = [
 
 const Hero = () => {
   return (
-    <section className="hero-gradient relative overflow-hidden h-screen">
-      <Carousel className="w-full h-full" opts={{ loop: true, align: "start", axis: "y" }}>
+    <section className="hero-gradient relative overflow-hidden">
+      <Carousel className="w-full" opts={{ loop: true, align: "start" }}>
         <CarouselContent>
           {heroSlides.map((slide, index) => (
             <CarouselItem key={index}>
@@ -75,8 +75,8 @@ const Hero = () => {
         </CarouselContent>
         
         {/* Navigation Arrows */}
-        <CarouselPrevious className="top-4 left-1/2 -translate-x-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-        <CarouselNext className="bottom-4 left-1/2 -translate-x-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+        <CarouselPrevious className="left-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+        <CarouselNext className="right-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
       </Carousel>
 
       {/* Background Pattern */}

@@ -118,9 +118,8 @@ All colors MUST be HSL.
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  /* NOTE: removed the global "* { @apply border-border }" rule here
+     — it added borders to every element and broke many layouts. */
 
   body {
     @apply bg-background text-foreground font-inter;
@@ -182,4 +181,96 @@ All colors MUST be HSL.
   .btn-primary {
     @apply transition-all duration-200 hover:scale-105 active:scale-95;
   }
+
+  /* ------------- Corporate: small cards (Our Mission / Philosophy / Vision / Strategy) ------------- */
+  .corp-card {
+    @apply bg-slate-50 rounded shadow-sm border border-border p-4 flex items-center justify-center;
+    min-height: 72px;
+  }
+
+  .corp-card img {
+    @apply object-cover w-20 h-20 rounded;
+  }
+
+ /* ---------- Single-row marquee: paste into @layer components ---------- */
+.corp-marquee {
+  /* container forms a single horizontal band */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 0;
+  background: transparent;
+}
+
+/* both tracks are inline-flex so they sit side-by-side in one row */
+.corp-marquee__track,
+.corp-marquee__track--dup {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  box-sizing: border-box;
+
+  /* prevents logos from wrapping to next line */
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  /* keep natural width, combined tracks should be >= 200% of container */
+  min-width: 200%;
+  will-change: transform;
+
+  /* animation: duration controls speed — increase to slow down */
+  animation: corp-marquee-scroll 40s linear infinite;
+}
+
+/* offset the duplicate track so the loop is seamless */
+.corp-marquee__track--dup {
+  animation-delay: -20s;
+}
+
+/* each item keeps its width and won't shrink */
+.corp-marquee__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* image sizing — tweak max-height to make logos bigger/smaller */
+.corp-marquee__item img {
+  max-height: 64px; /* try 56px or 72px if you want different size */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 0.98;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+/* subtle hover scale */
+.corp-marquee__item img:hover { transform: scale(1.06); opacity: 1; }
+
+/* pause animation when user hovers */
+.corp-marquee:hover .corp-marquee__track,
+.corp-marquee:hover .corp-marquee__track--dup {
+  animation-play-state: paused;
+}
+
+/* keyframes: translate exactly -50% (because we duplicate the set) */
+@keyframes corp-marquee-scroll {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .corp-marquee__track,
+  .corp-marquee__track--dup {
+    animation: none;
+  }
+}
+
+
+
+
 }
